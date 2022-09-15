@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        double[] it = new double[]{70, 40, 30, 20, 10, 20};
+        double[] it = new double[]{70, 40, 30, 20, 10, 80};
         double[] it2 = new double[]{70, 40, 30, 20, 30, 20};
         List<Double> capacities = new ArrayList<>();
         capacities.add(100.0);
@@ -29,13 +29,17 @@ public class Main {
 
 
 
-        FirstFitDecHetero ffdh = new FirstFitDecHetero(partitions, capacities /*Arrays.asList(100.0, 150.0)*/);
+        /*FirstFitDecHetero ffdh = new FirstFitDecHetero(partitions, capacities *//*Arrays.asList(100.0, 150.0)*//*);
         List<Consumer> recommendedconsumers = ffdh.fftFFDHetero();
+*/
+
+        LeastLoadedFFD ffdl = new LeastLoadedFFD(partitions, 100.0); // capacities /*Arrays.asList(100.0, 150.0)*/);
+        List<Consumer> recommendedconsumers = ffdl.fitFFD2();
 
         System.out.println("==========================================");
 
 
-        for(Consumer nc: recommendedconsumers) {
+       /* for(Consumer nc: recommendedconsumers) {
             recommendedConsumersByCapacity.put(nc.getCapacity(), recommendedConsumersByCapacity.getOrDefault(nc, 0) + 1);
         }
         boolean scale = false;
@@ -51,7 +55,7 @@ public class Main {
                 System.out.println("we shall downscale by " +  factor + " for consumer of capacity " + capacity);
                 //call statefulset consumer+capacity and up scale this sts
             }
-        }
+        }*/
 
 
 
